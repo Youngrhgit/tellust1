@@ -1,0 +1,19 @@
+.signInOutUpButton {
+  background: red;
+}
+.header {
+  display: flex;
+  flex-flow: row;
+  float: right;
+  gap: 30px;
+  border: 5px solid #000000;
+  background-color: brown;
+  color: lightblue;
+}
+.headerElements {
+  border: 1px solid #000000;
+  background-color: tan;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}

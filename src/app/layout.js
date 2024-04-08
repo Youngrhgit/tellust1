@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 
-import Link from "next/link";
-
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,73 +15,10 @@ export const metadata = {
 };
 */
 
-function AnonymousHeader(props) {
-  const setCurUser = props.setCurUser;
-
-  return (
-    <>
-      <div>
-        <Link href="/home">Home</Link>
-      </div>
-
-      <div>
-        <Link href="/explore">Explore</Link>
-      </div>
-
-      <div>
-        <Link href="/travelers">Travelers</Link>
-      </div>
-
-      <div>
-        <Link href="/settings">Settings</Link>
-      </div>
-
-      <button onClick={() => setCurUser("ryan")}>Sign In</button>
-    </>
-  );
-}
-
-function LoggedInHeader(props) {
-  const setCurUser = props.setCurUser;
-
-  return (
-    <>
-      <div>
-        <Link href="/home">Home</Link>
-      </div>
-      <div>
-        <Link href="/profile">Profile</Link>
-      </div>
-      <div>
-        <Link href="/explore">Explore</Link>
-      </div>
-      <div>
-        <Link href="/favorites">Favorites</Link>
-      </div>
-      <div>
-        <Link href="/messages">Messages</Link>
-      </div>
-      <div>
-        <Link href="/travelers">Travelers</Link>
-      </div>
-      <div>
-        <Link href="/settings">Settings</Link>
-      </div>
-
-      <button onClick={() => setCurUser(null)}>Sign Out</button>
-    </>
-  );
-}
-
 function RootLayout({ children }) {
   const [curUser, setCurUser] = useState(null);
 
-  let header;
-  if (curUser) {
-    header = <LoggedInHeader setCurUser={setCurUser} />;
-  } else {
-    header = <AnonymousHeader setCurUser={setCurUser} />;
-  }
+  const header = <Header curUser={curUser} setCurUser={setCurUser} foo={56} />;
 
   let component = (
     <html lang="en">
