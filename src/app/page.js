@@ -1,10 +1,9 @@
-export default function Home() {
+function HomeAnon() {
   return (
-    <div>
-      <div>Home</div>
-      <a href="/profile">Profile</a>
-
-      <div>Sign Up / Sign In</div>
-    </div>
+    <>
+      <div>This is the HomeAnon Page</div>
+    </>
   );
 }
+
+export default HomeAnon;
