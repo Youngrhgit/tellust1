@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useSettings } from "@/settingsContext";
 import styles from "./header.module.css";
@@ -9,21 +10,10 @@ function AnonymousHeader(props) {
 
   return (
     <div className={styles.header}>
-      <div className={styles.headerElements}>
-        <Link href="/home">Home</Link>
-      </div>
-
-      <div className={styles.headerElements}>
-        <Link href="/explore">Explore</Link>
-      </div>
-
-      <div className={styles.headerElements}>
-        <Link href="/travelers">Travelers</Link>
-      </div>
-
-      <div className={styles.headerElements}>
-        <Link href="/settings">Settings</Link>
-      </div>
+      <Link href="/home">Home</Link>
+      <Link href="/explore">Explore</Link>
+      <Link href="/travelers">Travelers</Link>
+      <Link href="/settings">Settings</Link>
 
       <button
         className={styles.signInOutUpButton}
@@ -51,16 +41,40 @@ function LoggedInHeader(props) {
   );
 }
 
+function LogoPanel() {
+  const component = (
+    <div className={styles.logoPanel}>
+      <Image
+        width={100}
+        height={100}
+        src="/images/LOGO.png"
+        alt="Tellus Logo"
+      />
+      Tellus App
+    </div>
+  );
+  return component;
+}
+
 function Header() {
   const settings = useSettings();
   const { curUser, setCurUser } = settings;
 
-  let header;
+  let subHeader;
   if (curUser) {
-    header = <LoggedInHeader setCurUser={setCurUser} />;
+    subHeader = <LoggedInHeader setCurUser={setCurUser} />;
   } else {
-    header = <AnonymousHeader setCurUser={setCurUser} />;
+    subHeader = <AnonymousHeader setCurUser={setCurUser} />;
   }
+
+  const logoPanel = <LogoPanel />;
+  const header = (
+    <div>
+      {logoPanel}
+      {subHeader}
+    </div>
+  );
+
   return header;
 }
 
