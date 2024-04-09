@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useSettings } from "@/settingsContext";
 import styles from "./header.module.css";
 
 function AnonymousHeader(props) {
@@ -37,34 +40,20 @@ function LoggedInHeader(props) {
 
   return (
     <div className={styles.header}>
-      <div className={styles.headerElements}>
-        <Link href="/home">Home</Link>
-      </div>
-      <div className={styles.headerElements}>
-        <Link href="/profile">Profile</Link>
-      </div>
-      <div className={styles.headerElements}>
-        <Link href="/explore">Explore</Link>
-      </div>
-      <div className={styles.headerElements}>
-        <Link href="/favorites">Favorites</Link>
-      </div>
-      <div className={styles.headerElements}>
-        <Link href="/messages">Messages</Link>
-      </div>
-      <div className={styles.headerElements}>
-        <Link href="/travelers">Travelers</Link>
-      </div>
-      <div className={styles.headerElements}>
-        <Link href="/settings">Settings</Link>
-      </div>
+      <Link href="/home">Home</Link>
+      <Link href="/profile">Profile</Link>
+      <Link href="/explore">Explore</Link>
+      <Link href="/favorites">Favorites</Link>
+      <Link href="/messages">Messages</Link>
+      <Link href="/travelers">Travelers</Link>
+      <Link href="/settings">Settings</Link>
     </div>
   );
 }
 
-function Header({ curUser, setCurUser }) {
-  //const curUser = props.curUser;
-  //const setCurUser = props.setCurUser;
+function Header() {
+  const settings = useSettings();
+  const { curUser, setCurUser } = settings;
 
   let header;
   if (curUser) {

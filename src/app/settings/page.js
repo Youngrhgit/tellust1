@@ -1,9 +1,9 @@
+"use client";
+
 import { useSettings } from "@/settingsContext";
 
 function Settings() {
   const settings = useSettings();
-
-  console.log("settings = ", settings);
   const setCurUser = settings.setCurUser;
 
   return (

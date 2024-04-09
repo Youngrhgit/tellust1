@@ -10,10 +10,17 @@
   background-color: brown;
   color: lightblue;
 }
-.headerElements {
+.header > * {
+  color: black;
   border: 1px solid #000000;
   background-color: tan;
   font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+
+  text-decoration: none;
+}
+
+.header > *:hover {
+  background: red;
 }

@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { Inter } from "next/font/google";
 import { SettingsProvider } from "@/settingsContext";
 import Header from "@/components/header";
@@ -17,15 +14,11 @@ export const metadata = {
 */
 
 function RootLayout({ children }) {
-  const [curUser, setCurUser] = useState(null);
-
-  const header = <Header curUser={curUser} setCurUser={setCurUser} foo={56} />;
-
   let component = (
     <SettingsProvider>
       <html lang="en">
         <body className={inter.className}>
-          {header}
+          <Header />
           {children}
         </body>
       </html>
