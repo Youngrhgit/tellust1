@@ -13,6 +13,7 @@ function SettingsProvider({ children }) {
 
   const settings = {
     curUser,
+    setCurUser,
   };
 
   const component = (

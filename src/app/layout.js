@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
 import { Inter } from "next/font/google";
-import "./globals.css";
+import { SettingsProvider } from "@/settingsContext";
 import Header from "@/components/header";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +22,14 @@ function RootLayout({ children }) {
   const header = <Header curUser={curUser} setCurUser={setCurUser} foo={56} />;
 
   let component = (
-    <html lang="en">
-      <body className={inter.className}>
-        {header}
-        {children}
-      </body>
-    </html>
+    <SettingsProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          {header}
+          {children}
+        </body>
+      </html>
+    </SettingsProvider>
   );
 
   return component;

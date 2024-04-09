@@ -1,4 +1,11 @@
-export default function Settings() {
+import { useSettings } from "@/settingsContext";
+
+function Settings() {
+  const settings = useSettings();
+
+  console.log("settings = ", settings);
+  const setCurUser = settings.setCurUser;
+
   return (
     <>
       <div>This is the Settings Page</div>
@@ -7,3 +14,5 @@ export default function Settings() {
     </>
   );
 }
+
+export default Settings;
